@@ -10,7 +10,7 @@
         body { 
             font-family: 'Noto Serif KR', serif; 
             word-break: keep-all; 
-            background-color: #f9f7f4; 
+            background-color: #fdfaf7; 
         }
         .animate-fadeIn { animation: fadeIn 2s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
@@ -22,43 +22,43 @@
         }
 
         .text-shadow-strong {
-            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.3);
         }
 
         .img-fade {
             transition: opacity 1s ease-in-out;
         }
 
-        /* 아기를 위한 부드러운 하이라이트 컬러 */
-        .text-gold { color: #c5a35d; }
+        .animate-spin-slow { animation: spin 15s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     </style>
 </head>
 <body class="text-stone-800">
 
     <div class="max-w-md mx-auto bg-white shadow-2xl min-h-screen relative overflow-x-hidden">
         
-        <!-- 배경음악 -->
+        <!-- Background Music -->
         <audio id="bgm" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
-        <!-- 배경음악 버튼 -->
+        <!-- Music Toggle Button -->
         <button onclick="toggleMusic()" class="fixed top-6 right-6 z-50 w-10 h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center shadow-sm border border-white/20 transition-transform active:scale-90">
             <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b5e54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
             </svg>
         </button>
 
-        <!-- 메인 화면 -->
+        <!-- Hero Section -->
         <header class="h-[95vh] bg-cover bg-center flex flex-col items-center justify-center text-center relative px-6" 
                 style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80')">
             <div class="text-white space-y-10 animate-fadeIn text-shadow-strong">
                 <div class="space-y-3">
                     <p class="text-[12px] tracking-[0.5em] font-light opacity-90">기다림 끝에 마주한 선물</p>
-                    <h1 class="text-3xl font-light tracking-widest flex flex-col gap-4">
+                    <h1 class="text-4xl font-light tracking-widest flex flex-col gap-4">
                         <span>김도언</span>
                         <span class="text-rose-200/70 animate-heartbeat text-2xl">♥</span>
                         <span>김매</span>
                     </h1>
-                    <p class="text-[13px] mt-4 font-light text-rose-100/90">그리고 아들 <span class="font-normal text-white">김요한</span></p>
+                    <p class="text-[14px] mt-6 font-light text-rose-100/90 tracking-wide">그리고 아들 <span class="font-normal text-white">김요한</span></p>
                 </div>
 
                 <div class="w-12 h-[0.5px] bg-white/30 mx-auto"></div>
@@ -70,13 +70,13 @@
                 
                 <p class="text-[12px] opacity-80 tracking-widest">스타시티영존 5층 웨딩홀</p>
                 
-                <!-- 카운트다운 -->
+                <!-- D-Day Countdown Container -->
                 <div id="dday" class="pt-24 flex justify-center gap-8 text-white font-extralight">
                 </div>
             </div>
         </header>
 
-        <!-- 초대글 섹션 -->
+        <!-- Invitation Text Section -->
         <section class="py-32 px-10 text-center space-y-16">
             <div class="space-y-3">
                 <p class="text-stone-400 text-[10px] tracking-[0.5em] uppercase">초대합니다</p>
@@ -86,14 +86,14 @@
             <div class="text-[15px] text-stone-500 leading-[2.6] font-light px-2">
                 <p>2020년 어느 봄날,<br>저희는 부부가 되기를 약속했었습니다.</p>
                 <p>멈춰버린 시간과 예상치 못한 기다림 속에서<br>서로의 손을 더욱 단단히 잡았습니다.</p>
-                <p>그 깊어진 사랑의 시간 끝에,<br>2024년 12월 11일<br><span class="text-stone-800 font-normal">아들 요한이</span>가 저희에게 찾아왔습니다.</p>
+                <p>그 깊어진 사랑의 시간 끝에,<br>2024년 12월 11일<br><span class="text-stone-800 font-normal underline decoration-stone-200 underline-offset-8">아들 요한이</span>가 저희에게 찾아왔습니다.</p>
                 <p>긴 기다림은 요한이라는 큰 선물을 만나기 위한<br>아름다운 여정이었음을 이제야 고백합니다.</p>
                 <p>마침내 완성된 저희 세 사람의 시작,<br>그 소중한 자리에 꼭 함께해주시길 소망합니다.</p>
             </div>
 
             <div class="pt-16 space-y-8">
                 <div class="flex flex-col items-center gap-6 py-10 border-y border-stone-100">
-                    <div class="text-[14px] text-stone-600 space-y-5">
+                    <div class="text-[15px] text-stone-600 space-y-6">
                         <p class="flex items-center justify-center">
                             <span class="text-stone-400 text-[11px] mr-2">아버지</span> 김철용 
                             <span class="mx-1 text-stone-300">·</span>
@@ -102,7 +102,7 @@
                             <span class="text-stone-800 font-medium tracking-wide">김도언</span>
                         </p>
                         <p class="flex items-center justify-center">
-                            <span class="text-stone-400 text-[11px] mr-2">아버지</span> 김인영 
+                            <span class="text-stone-400 text-[11px] mr-2">아버지</span> 김임영 
                             <span class="mx-1 text-stone-300">·</span>
                             <span class="text-stone-400 text-[11px] mr-2">어머니</span> 김봉란 
                             <span class="text-stone-300 text-[10px] mx-3 italic">의 딸</span> 
@@ -113,7 +113,7 @@
             </div>
         </section>
 
-        <!-- 사진첩 섹션 -->
+        <!-- Gallery Section -->
         <section class="py-24 bg-stone-50/60">
             <div class="text-center mb-16 space-y-3">
                 <p class="text-stone-400 text-[10px] tracking-[0.5em]">사진첩</p>
@@ -134,7 +134,7 @@
             </div>
         </section>
 
-        <!-- 오시는 길 섹션 -->
+        <!-- Location Section -->
         <section class="py-24 px-8">
             <div class="text-center mb-14 space-y-3">
                 <p class="text-stone-400 text-[10px] tracking-[0.5em]">오시는 길</p>
@@ -156,7 +156,7 @@
             </div>
         </section>
 
-        <!-- 마음 전하실 곳 섹션 -->
+        <!-- Account Info Section -->
         <section class="py-24 px-8 bg-stone-50/80">
             <div class="text-center mb-14 space-y-3">
                 <p class="text-stone-400 text-[10px] tracking-[0.5em]">마음 전하실 곳</p>
@@ -188,6 +188,7 @@
             <p class="text-[11px] text-stone-300 font-light leading-relaxed">저희와 요한이의 시작을<br>함께 축복해주셔서 감사합니다.</p>
         </footer>
 
+        <!-- Copy Confirmation Toast -->
         <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-stone-800/95 text-white px-10 py-3.5 rounded-full text-[12px] opacity-0 transition-opacity duration-300 z-50 pointer-events-none font-light">
             계좌번호가 복사되었습니다.
         </div>
@@ -195,10 +196,21 @@
     </div>
 
     <script>
-        const targetDate = new Date('2026-05-24T11:00:00');
+        // Wedding Date in Korea Standard Time (UTC+9)
+        const weddingDateKST = new Date('2026-05-24T11:00:00+09:00');
+
         function updateDday() {
+            // Get current time in KST
             const now = new Date();
-            const diff = targetDate - now;
+            
+            // Difference in milliseconds
+            const diff = weddingDateKST - now;
+            
+            if (diff <= 0) {
+                document.getElementById('dday').innerHTML = "<p class='text-xl tracking-widest'>저희, 오늘 결혼합니다.</p>";
+                return;
+            }
+
             const d = Math.floor(diff / (1000 * 60 * 60 * 24));
             const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
             const m = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
@@ -214,9 +226,11 @@
                 <div class="flex flex-col items-center"><span class="text-2xl font-light text-rose-300">${s}</span><span class="text-[10px] mt-2 opacity-60 font-medium">초</span></div>
             `;
         }
+        
         setInterval(updateDday, 1000);
         updateDday();
 
+        // Background Music Control
         function toggleMusic() {
             const audio = document.getElementById('bgm');
             const icon = document.getElementById('musicIcon');
@@ -231,6 +245,7 @@
             }
         }
 
+        // Photo Gallery Logic
         const images = [
             "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
             "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
@@ -259,6 +274,7 @@
             });
         }
 
+        // Clipboard Copy Logic
         function copyToClipboard(text) {
             const el = document.createElement('textarea');
             el.value = text;
