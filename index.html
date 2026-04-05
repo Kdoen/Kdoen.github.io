@@ -3,242 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Playfair+Display:ital,wght@0,400;1,400&family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
-    
+    <title>김도언 & 김매 결혼식</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Noto+Serif+KR:wght@200;400;700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --bg-color: #fdfdfd;
-            --text-main: #444444;
-            --text-light: #8e8e8e;
-            --accent: #bcaaa4; /* Soft clay/sand tone */
-        }
-
-        body {
-            font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
-            margin: 0;
-            background-color: #f4f4f4;
-            color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .mobile-wrap {
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-            background-color: var(--bg-color);
-            overflow: hidden;
-        }
-
-        section {
-            padding: 60px 30px;
-            text-align: center;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 0;
-            position: relative;
-        }
-        .hero img {
-            width: 100%;
-            display: block;
-        }
-        .hero-title {
-            padding: 40px 20px;
-        }
-        .hero-title h1 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 400;
-            font-size: 26px;
-            letter-spacing: 3px;
-            margin: 10px 0;
-        }
-        .hero-title p {
-            font-size: 13px;
-            color: var(--text-light);
-            letter-spacing: 1px;
-        }
-
-        /* Text Styles */
-        .section-label {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 14px;
-            color: var(--accent);
-            margin-bottom: 8px;
-            display: block;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: 400;
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-        }
-
-        /* Calendar Style */
-        .calendar {
-            margin: 20px auto;
-            max-width: 280px;
-            font-size: 13px;
-        }
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
-        }
-        .day-name { color: var(--text-light); font-size: 11px; margin-bottom: 10px; }
-        .day { padding: 5px; }
-        .wedding-day { 
-            background-color: var(--accent); 
-            color: white; 
-            border-radius: 50%; 
-        }
-
-        /* Countdown */
-        .d-day-wrap {
-            background-color: #f9f8f6;
-            padding: 20px;
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-around;
-        }
-        .d-day-item span {
-            display: block;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 18px;
-        }
-        .d-day-label { font-size: 10px; color: var(--text-light); }
-
-        /* Buttons (Map/Account) */
-        .btn {
-            display: inline-block;
-            padding: 12px 25px;
-            border: 1px solid #e0e0e0;
-            text-decoration: none;
-            color: var(--text-main);
-            font-size: 13px;
-            margin-top: 20px;
-            transition: 0.3s;
-            cursor: pointer;
-            background: #fff;
-        }
-        .btn:active { background-color: #f0f0f0; }
-
-        .info-text {
-            font-size: 14px;
-            line-height: 1.8;
-            color: #666;
-            text-align: left;
-        }
-
+        :root { --main-bg: #ffffff; --point-color: #bcaaa4; --text-color: #333333; }
+        body { font-family: 'Noto Serif KR', serif; background-color: #f8f8f8; color: var(--text-color); word-break: keep-all; }
+        .serif-en { font-family: 'Playfair Display', serif; }
+        .sans-en { font-family: 'Montserrat', sans-serif; }
+        
+        /* 메종드마리 특유의 부드러운 애니메이션 */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 1.2s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-<div class="mobile-wrap">
-    
-    <section class="hero">
-        <img src="https://via.placeholder.com/800x1000/F9F8F6/888888?text=Main+Wedding+Photo" alt="Main">
-        <div class="hero-title">
-            <p>2026 . 05 . 24</p>
-            <h1>DO EON & MAE</h1>
-            <p>STAR CITY ART HALL, 5F</p>
-        </div>
-    </section>
-
-    <section>
-        <span class="section-label">Invitation</span>
-        <h3 class="section-title">소중한 분들을 초대합니다</h3>
-        <p style="line-height: 2; font-size: 14px; color: #666;">
-            서로가 마주보며 다져온 사랑을<br>
-            이제 함께 한 곳을 바라보며 걸어가려 합니다.<br>
-            저희의 첫 시작을 축복해 주시면 감사하겠습니다.
-        </p>
-        <div style="margin-top: 40px; font-size: 15px;">
-            <p>김철용 · 이여숙 <small style="color:#aaa">의 아들</small> <strong>도언</strong></p>
-            <p>김임영 · 김봉란 <small style="color:#aaa">의 딸</small> <strong>매</strong></p>
-        </div>
-    </section>
-
-    <section style="background-color: #faf9f7;">
-        <span class="section-label">Wedding Day</span>
-        <h3 class="section-title">2026. 05. 24</h3>
+    <div class="max-w-md mx-auto bg-white min-h-screen shadow-sm">
         
-        <div class="calendar">
-            <div class="calendar-grid">
-                <div class="day-name">SUN</div><div class="day-name">MON</div><div class="day-name">TUE</div><div class="day-name">WED</div><div class="day-name">THU</div><div class="day-name">FRI</div><div class="day-name">SAT</div>
-                <div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div>
-                <div class="day wedding-day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div>
+        <header class="py-24 px-10 text-center border-b border-stone-50">
+            <p class="serif-en italic text-stone-400 text-sm tracking-widest mb-6">The Wedding Day</p>
+            <div class="space-y-4 mb-12">
+                <h1 class="text-3xl font-light tracking-[0.2em]">김도언 <span class="text-stone-300 mx-2">|</span> 김매</h1>
+                <p class="sans-en text-[11px] tracking-[0.4em] text-stone-400 uppercase">2026 . 05 . 24 . SUN . 11:00 AM</p>
             </div>
-        </div>
+            <div class="w-full aspect-[3/4] bg-stone-100 overflow-hidden rounded-sm">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80" class="w-full h-full object-cover grayscale-[0.1]" alt="Main Photo">
+            </div>
+        </header>
 
-        <div class="d-day-wrap">
-            <div class="d-day-item"><span id="d-days">00</span><div class="d-day-label">DAYS</div></div>
-            <div class="d-day-item"><span id="d-hours">00</span><div class="d-day-label">HOUR</div></div>
-            <div class="d-day-item"><span id="d-mins">00</span><div class="d-day-label">MIN</div></div>
-            <div class="d-day-item"><span id="d-secs">00</span><div class="d-day-label">SEC</div></div>
-        </div>
-    </section>
+        <section class="py-24 px-10 text-center space-y-16">
+            <div class="space-y-2">
+                <span class="serif-en italic text-stone-300 text-lg">Invitation</span>
+                <h2 class="text-xl font-normal tracking-widest">초대합니다</h2>
+            </div>
+            
+            <div class="text-[15px] leading-[2.8] text-stone-600 font-light px-2">
+                <p>2020년 어느 봄날,<br>저희는 부부가 되기를 약속했었습니다.</p>
+                <p>멈춰버린 시간과 예상치 못한 기다림 속에서<br>서로의 손을 더욱 단단히 잡았습니다.</p>
+                <p>그 깊어진 사랑의 시간 끝에,<br>2024년 12월 11일<br><span class="text-stone-900 font-normal border-b border-stone-200 pb-1">아들 요한이</span>가 저희에게 찾아왔습니다.</p>
+                <p>긴 기다림은 요한이라는 큰 선물을 만나기 위한<br>아름다운 여정이었음을 이제야 고백합니다.</p>
+                <p>마침내 완성된 저희 세 사람의 시작,<br>그 소중한 자리에 함께해주시길 소망합니다.</p>
+            </div>
 
-    <section id="location">
-        <span class="section-label">Location</span>
-        <h3 class="section-title">오시는 길</h3>
-        
-        <div style="margin-bottom: 25px;">
-            <p style="margin-bottom: 5px;"><strong>스타시티아트홀 5층</strong></p>
-            <p style="font-size: 13px; color: var(--text-light);">서울 광진구 화양동 4-20 스타시티영존 5층</p>
-        </div>
+            <div class="pt-12 space-y-4 text-[15px] border-t border-stone-50">
+                <p><span class="text-stone-400 mr-2">아버님</span> 김철용 <span class="text-stone-400 mx-1">·</span> <span class="text-stone-400 mr-2">어머님</span> 이기영 <span class="text-stone-300 text-xs mx-3">의 아들</span> <span class="font-medium">도언</span></p>
+                <p><span class="text-stone-400 mr-2">아버님</span> 김임영 <span class="text-stone-400 mx-1">·</span> <span class="text-stone-400 mr-2">어머님</span> 김봉란 <span class="text-stone-300 text-xs mx-3">의 딸</span> <span class="font-medium">매</span></p>
+            </div>
+        </section>
 
-        <div style="width:100%; height:300px; border: 1px solid #f0f0f0; border-radius: 12px; overflow: hidden; margin-bottom: 20px;">
-            <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.447!2d127.068!3d37.539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4e00787e35b%3A0xc3c948483b8796f6!2z7Iqk7YOA7Iuc7Yuw7JiB7KG0!5e0!3m2!1sko!2skr!4v1711234567890!5m2!1sko!2skr" 
-                width="100%" 
-                height="100%" 
-                style="border:0; filter: grayscale(0.2);" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>
-        </div>
+        <section class="py-20 bg-stone-50/30 text-center">
+            <p class="sans-en text-[10px] tracking-[0.5em] text-stone-400 mb-10 uppercase">Save the Date</p>
+            <div class="max-w-[280px] mx-auto grid grid-cols-7 gap-y-4 text-[13px] font-light">
+                <div class="text-rose-300">SUN</div><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div>
+                <div class="py-2 text-stone-200">17</div><div class="py-2 text-stone-200">18</div><div class="py-2 text-stone-200">19</div><div class="py-2 text-stone-200">20</div><div class="py-2 text-stone-200">21</div><div class="py-2 text-stone-200">22</div><div class="py-2 text-stone-200">23</div>
+                <div class="relative flex items-center justify-center">
+                    <span class="absolute w-8 h-8 bg-stone-800 rounded-full -z-10"></span>
+                    <span class="text-white font-medium">24</span>
+                </div>
+                <div class="py-2">25</div><div class="py-2">26</div><div class="py-2">27</div><div class="py-2">28</div><div class="py-2">29</div><div class="py-2">30</div>
+            </div>
+            
+            <div id="countdown" class="mt-12 flex justify-center gap-8 sans-en text-stone-400 text-sm">
+                </div>
+        </section>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-            <button onclick="window.open('https://map.naver.com/v5/directions/-/14145228.61,4514841.05,%EC%8A%A4%ED%83%80%EC%8B%9C%ED%8B%B0%EC%98%81%EC%A1%B4,,ADDRESS_POI')" class="btn" style="margin-top: 0;">네이버 지도</button>
-            <button onclick="window.open('https://map.kakao.com/link/to/스타시티영존,37.541641,127.070622')" class="btn" style="margin-top: 0;">카카오 지도</button>
-        </div>
+        <section class="py-24 px-8 text-center">
+            <p class="serif-en italic text-stone-300 text-lg mb-2">Location</p>
+            <h3 class="text-lg font-normal tracking-widest mb-10">오시는 길</h3>
+            
+            <div class="mb-10 space-y-1">
+                <p class="text-stone-800 font-medium text-[16px]">스타시티영존 5층 웨딩홀</p>
+                <p class="text-stone-400 text-sm font-light">서울 광진구 능동로 110 (화양동)</p>
+            </div>
+            
+            <div class="rounded-sm overflow-hidden h-72 mb-8 border border-stone-100 shadow-sm">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.447!2d127.068!3d37.539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4e00787e35b%3A0xc3c948483b8796f6!2z7Iqk7YOA7Iuc7Yuw7JiB7KG0!5e0!3m2!1sko!2skr!4v1711234567890!5m2!1sko!2skr" class="w-full h-full grayscale-[0.4]" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
 
-        <div class="info-text" style="margin-top: 35px; border-top: 1px solid #f0f0f0; padding-top: 25px;">
-            <p><strong>지하철:</strong> 2호선 건대입구역 2번 출구 앞 건물</p>
-            <p><strong>주차:</strong> 건물 내 B1-B5 (2시간 무료)</p>
-        </div>
-    </section>
+            <div class="flex gap-3 justify-center">
+                <button onclick="window.open('https://map.naver.com/v5/directions/-/14145228.61,4514841.05,%EC%8A%A4%ED%83%80%EC%8B%9C%ED%8B%B0%EC%98%81%EC%A1%B4,,ADDRESS_POI')" class="flex-1 py-4 border border-stone-100 text-[12px] text-stone-500 hover:bg-stone-50 transition">네이버 지도</button>
+                <button onclick="window.open('https://map.kakao.com/link/to/스타시티영존,37.541641,127.070622')" class="flex-1 py-4 border border-stone-100 text-[12px] text-stone-500 hover:bg-stone-50 transition">카카오 지도</button>
+            </div>
+        </section>
 
-    <section style="background-color: #faf9f7;">
-        <span class="section-label">Gifts</span>
-        <h3 class="section-title">마음 전하실 곳</h3>
-        <a href="#" class="btn">신랑측 계좌번호 확인</a>
-        <a href="#" class="btn">신부측 계좌번호 확인</a>
-    </section>
+        <section class="py-24 px-8 bg-stone-50/50">
+            <p class="serif-en italic text-stone-300 text-lg mb-2">Gifts</p>
+            <h3 class="text-lg font-normal tracking-widest mb-12">마음 전하실 곳</h3>
+            
+            <div class="space-y-4">
+                <div class="bg-white p-8 border border-stone-100 text-left flex justify-between items-center">
+                    <div>
+                        <p class="text-[10px] text-stone-400 uppercase tracking-widest mb-1">Groom Side</p>
+                        <p class="text-[15px] text-stone-700">신한 110-123-456789 <span class="ml-2 font-medium">김도언</span></p>
+                    </div>
+                    <button onclick="copyAcc('110-123-456789')" class="text-[11px] text-stone-300 border border-stone-100 px-3 py-1 hover:text-stone-500">복사</button>
+                </div>
+                <div class="bg-white p-8 border border-stone-100 text-left flex justify-between items-center">
+                    <div>
+                        <p class="text-[10px] text-stone-400 uppercase tracking-widest mb-1">Bride Side</p>
+                        <p class="text-[15px] text-stone-700">우리 1002-123-456789 <span class="ml-2 font-medium">김매</span></p>
+                    </div>
+                    <button onclick="copyAcc('1002-123-456789')" class="text-[11px] text-stone-300 border border-stone-100 px-3 py-1 hover:text-stone-500">복사</button>
+                </div>
+            </div>
+        </section>
 
-</div>
+        <footer class="py-20 text-center border-t border-stone-50">
+            <p class="serif-en italic text-stone-200 text-sm tracking-widest mb-4">Forever & Always</p>
+            <p class="text-[11px] text-stone-300 font-light tracking-widest uppercase">Thank you for being with us</p>
+        </footer>
 
-<script>
-    // Countdown logic
-    const weddingDate = new Date("May 24, 2026 11:00:00").getTime();
-    setInterval(function() {
-        const now = new Date().getTime();
-        const diff = weddingDate - now;
-        
-        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((diff % (1000 * 60)) / 1000);
+    </div>
 
-        if(document.getElementById("d-days")) document.getElementById("d-days").innerText = d;
-        if(document.getElementById("d-hours")) document.getElementById("d-hours").innerText = h;
-        if(document.getElementById("d-mins")) document.getElementById("d-mins").innerText = m;
-        if(document.getElementById("d-secs")) document.getElementById("d-secs").innerText = s;
-    }, 1000);
-</script>
+    <script>
+        // 카운트다운 로직
+        const weddingDate = new Date('2026-05-24T11:00:00+09:00');
+        function updateCounter() {
+            const now = new Date();
+            const diff = weddingDate - now;
+            const container = document.getElementById('countdown');
+            if (diff <= 0) { container.innerHTML = "Wedding Day"; return; }
+            
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const m = Math.floor((diff / 1000 / 60) % 60);
+            
+            container.innerHTML = `<span>${d} DAYS</span> <span>${h} HOURS</span> <span>${m} MIN</span>`;
+        }
+        setInterval(updateCounter, 1000); updateCounter();
 
+        // 계좌 복사 로직
+        function copyAcc(text) {
+            const el = document.createElement('textarea'); el.value = text; document.body.appendChild(el); el.select();
+            document.execCommand('copy'); document.body.removeChild(el); alert('계좌번호가 복사되었습니다.');
+        }
+    </script>
 </body>
 </html>
