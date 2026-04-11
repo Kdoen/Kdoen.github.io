@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -56,18 +57,21 @@
             z-index: 10;
         }
 
+        /* 优化照片容器，使其尺寸更大更自然 */
         .photo-frame {
             border: 1px solid rgba(0,0,0,0.05);
-            padding: 10px;
+            padding: 12px;
             background: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            transition: all 0.3s ease;
         }
 
         .main-wedding-photo {
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover;
         }
 
         .heart-icon {
@@ -77,7 +81,6 @@
             margin: 0 0.3em;
         }
 
-        /* 恢复居中的 Thank you 样式 */
         .thank-you-container {
             margin-top: 32px;
             text-align: center;
@@ -90,24 +93,24 @@
         <div class="center-crease"></div>
 
         <!-- LEFT SIDE: 主照片 -->
-        <div class="p-8 md:p-12 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
-            <div class="w-full max-w-[320px] mb-8">
+        <div class="p-6 md:p-10 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
+            <div class="w-full max-w-[360px] mb-8"> <!-- 增加了最大宽度限制 -->
                 <div class="photo-frame">
-                    <img id="main-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" 
-                         alt="Main Wedding Photo" class="main-wedding-photo grayscale-[0.1]">
+                    <img id="main-photo" src="https://kdoen.github.io/16_BJS02649.jpg" 
+                         alt="Main Wedding Photo" class="main-wedding-photo">
                 </div>
-                <div class="mt-4 text-center">
-                    <p class="text-[10px] tracking-widest text-stone-400">婚礼邀请函</p>
-                    <p class="text-[9px] tracking-widest text-stone-400 uppercase font-light">Welcome to our wedding</p>
+                <div class="mt-6 text-center">
+                    <p class="text-[10px] tracking-[0.3em] text-stone-400 uppercase">婚礼邀请函</p>
+                    <p class="text-[9px] tracking-[0.2em] text-stone-300 uppercase font-light mt-1">Welcome to our wedding</p>
                 </div>
             </div>
 
-            <div class="text-center space-y-6">
-                <p class="text-sm tracking-widest text-stone-500 font-light">诚挚邀请您前来参加我们的婚礼</p>
+            <div class="text-center space-y-5">
+                <p class="text-sm tracking-[0.2em] text-stone-500 font-light">诚挚邀请您前来参加我们的婚礼</p>
                 <div class="cursive text-xs text-stone-400 italic">
                     "In the flow of time, love is the only eternity."
                 </div>
-                <h1 class="text-xl md:text-2xl font-normal tracking-[0.2em] text-stone-800 pt-4 flex items-center justify-center">
+                <h1 class="text-xl md:text-2xl font-normal tracking-[0.2em] text-stone-800 pt-2 flex items-center justify-center">
                     金道彦 <span class="heart-icon">❤</span> 金梅
                 </h1>
             </div>
@@ -166,3 +169,5 @@
     </script>
 </body>
 </html>
+
+```
