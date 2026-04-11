@@ -1,377 +1,167 @@
 ```html
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>김도언 & 김매 그리고 요한이의 결혼식</title>
+    <title>Wedding Invitation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-paper: #f9f8f4;
+            --text-main: #333333;
+            --accent-red: #8c2a2a;
+        }
         body { 
-            font-family: 'Noto Serif KR', serif; 
-            word-break: keep-all; 
-            background-color: #fdfaf7; 
-        }
-        .animate-fadeIn { animation: fadeIn 2s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .animate-heartbeat { animation: heartbeat 3s ease-in-out infinite; }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
-
-        .text-shadow-strong {
-            text-shadow: 0 4px 12px rgba(0,0,0,0.7), 0 0 20px rgba(0,0,0,0.3);
-        }
-
-        .img-fade {
-            transition: opacity 1s ease-in-out;
-        }
-
-        .animate-spin-slow { animation: spin 15s linear infinite; }
-        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-
-        /* [추가] 혼주 성함 정렬 스타일 */
-        .family-layout {
+            font-family: 'Noto Serif SC', serif; 
+            background-color: #d6d6d6;
+            color: var(--text-main);
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
-            line-height: 2.2;
-        }
-        .family-group {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-        .info-row {
-            display: flex;
             align-items: center;
-            font-size: 15px;
+            min-height: 100vh;
+            margin: 0;
         }
-        .role-tag {
-            font-size: 11px;
-            color: #b5ada8;
-            width: 38px;
-            text-align: justify;
-            text-align-last: justify;
+        .paper-texture {
+            background-color: var(--bg-paper);
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
         }
-        .dot-divider {
-            margin: 0 10px;
-            color: #efeeed;
-        }
-        /* 어머니 성함 아래 자녀 이름 정밀 들여쓰기 */
-        .child-indent {
-            padding-left: 58px; 
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 2px;
-        }
-        .rel-label { font-size: 11px; color: #b5ada8; }
-        .name-main { font-size: 16px; font-weight: 500; letter-spacing: 0.1em; color: #333; }
-
-        /* [추가] 달력 디자인 - 24일 파란색 원 */
-        .cal-grid {
+        .cursive { font-family: 'Dancing Script', cursive; }
+        
+        /* Layout mimics the physical spread */
+        .invitation-spread {
+            width: 100%;
+            max-width: 900px;
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            text-align: center;
-            font-size: 14px;
-            row-gap: 20px;
-            max-width: 280px;
-            margin: 0 auto;
+            grid-template-columns: 1fr 1fr;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            background-color: var(--bg-paper);
+            position: relative;
         }
-        .cal-head { font-size: 10px; color: #e0dbd8; margin-bottom: 12px; }
-        .sun-text { color: #fca5a5; }
-        .sat-text { color: #93c5fd; }
-        
-        .blue-mark {
-            background-color: #eff6ff;
-            color: #2563eb;
-            border-radius: 50%;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: -8px auto;
-            font-weight: 700;
+
+        /* Responsive for mobile - stacks the spread */
+        @media (max-width: 768px) {
+            .invitation-spread {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+            }
+            .center-crease { display: none; }
+        }
+
+        .center-crease {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0), rgba(0,0,0,0.05));
+            z-index: 10;
+        }
+
+        .photo-frame {
+            border: 1px solid rgba(0,0,0,0.05);
+            padding: 10px;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
         }
     </style>
 </head>
-<body class="text-stone-800">
+<body>
 
-    <div class="max-w-md mx-auto bg-white shadow-2xl min-h-screen relative overflow-x-hidden">
-        
-        <!-- 배경음악 -->
-        <audio id="bgm" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <div class="invitation-spread paper-texture animate-fadeIn">
+        <div class="center-crease"></div>
 
-        <!-- 음악 토글 버튼 -->
-        <button onclick="toggleMusic()" class="fixed top-6 right-6 z-50 w-10 h-10 bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center shadow-sm border border-white/20 transition-transform active:scale-90">
-            <svg id="musicIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b5e54" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle>
-            </svg>
-        </button>
-
-        <!-- 메인 헤더 섹션 -->
-        <header class="h-[95vh] bg-cover bg-center flex flex-col items-center justify-center text-center relative px-6" 
-                style="background-image: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6)), url('image.png'), url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=80')">
-            <div class="text-white space-y-10 animate-fadeIn text-shadow-strong">
-                <div class="space-y-3">
-                    <p class="text-[12px] tracking-[0.5em] font-light opacity-90">기다림 끝에 마주한 선물</p>
-                    <h1 class="text-4xl font-light tracking-widest flex flex-col gap-4">
-                        <span>김도언</span>
-                        <span class="text-rose-200/70 animate-heartbeat text-2xl">♥</span>
-                        <span>김매</span>
-                    </h1>
-                    <p class="text-[14px] mt-6 font-light text-rose-100/90 tracking-wide">그리고 아들 <span class="font-normal text-white">김요한</span></p>
+        <!-- LEFT SIDE: Main Visual & Names -->
+        <div class="p-8 md:p-12 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
+            <div class="w-full max-w-[320px] mb-8">
+                <div class="photo-frame">
+                    <!-- REPLACE THIS URL with your main wedding photo -->
+                    <img id="main-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" 
+                         alt="Main Wedding Photo" class="w-full h-auto grayscale-[0.2]">
                 </div>
-
-                <div class="w-12 h-[0.5px] bg-white/30 mx-auto"></div>
-
-                <div class="space-y-2 font-light tracking-widest">
-                    <p class="text-xl">2026년 5월 24일</p>
-                    <p class="text-sm opacity-90 tracking-[0.2em]">일요일 오전 11시</p>
-                </div>
-                
-                <p class="text-[12px] opacity-80 tracking-widest">스타시티영존 5층 웨딩홀</p>
-                
-                <div id="dday" class="pt-24 flex justify-center gap-8 text-white font-extralight"></div>
-            </div>
-        </header>
-
-        <!-- 초대장 본문 섹션 -->
-        <section class="py-32 px-10 text-center space-y-16">
-            <div class="space-y-3">
-                <p class="text-stone-400 text-[10px] tracking-[0.5em] uppercase">초대합니다</p>
-                <h2 class="text-stone-800 text-xl font-normal tracking-wider">세 사람이 함께하는 첫 걸음</h2>
-            </div>
-            
-            <div class="text-[15px] text-stone-500 leading-[2.6] font-light px-2">
-                <p>2020년 어느 봄날,<br>저희는 부부가 되기를 약속했었습니다.</p>
-                <p>멈춰버린 시간과 예상치 못한 기다림 속에서<br>서로의 손을 더욱 단단히 잡았습니다.</p>
-                <p>그 깊어진 사랑의 시간 끝에,<br>2024년 12월 11일<br><span class="text-stone-800 font-normal underline decoration-stone-200 underline-offset-8">아들 요한이</span>가 저희에게 찾아왔습니다.</p>
-                <p>긴 기다림은 요한이라는 큰 선물을 만나기 위한<br>아름다운 여정이었음을 이제야 고백합니다.</p>
-                <p>마침내 완성된 저희 세 사람의 시작,<br>그 소중한 자리에 꼭 함께해주시길 소망합니다.</p>
-            </div>
-
-            <!-- 혼주 정보 섹션 (수직 정렬 적용) -->
-            <div class="pt-16 border-y border-stone-50 py-16">
-                <div class="family-layout">
-                    <!-- 신랑측 -->
-                    <div class="family-group">
-                        <div class="info-row">
-                            <span class="role-tag">아버지</span>
-                            <span class="dot-divider">·</span>
-                            <span>김철용</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="role-tag">어머니</span>
-                            <span class="dot-divider">·</span>
-                            <span>이기영</span>
-                        </div>
-                        <div class="child-indent">
-                            <span class="rel-label">아들</span>
-                            <span class="name-main">도언</span>
-                        </div>
-                    </div>
-
-                    <div class="w-[1px] h-20 bg-stone-100 self-center opacity-60"></div>
-
-                    <!-- 신부측 -->
-                    <div class="family-group">
-                        <div class="info-row">
-                            <span class="role-tag">아버지</span>
-                            <span class="dot-divider">·</span>
-                            <span>김임영</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="role-tag">어머니</span>
-                            <span class="dot-divider">·</span>
-                            <span>김봉란</span>
-                        </div>
-                        <div class="child-indent">
-                            <span class="rel-label">딸</span>
-                            <span class="name-main">매</span>
-                        </div>
-                    </div>
+                <div class="mt-4 text-center">
+                    <p class="text-[10px] tracking-widest text-stone-400">婚禮請柬</p>
+                    <p class="text-[9px] tracking-widest text-stone-400 uppercase font-light">Welcome to our wedding</p>
                 </div>
             </div>
-        </section>
 
-        <!-- 달력 섹션 (추가) -->
-        <section class="py-24 bg-white">
-            <div class="text-center mb-16 space-y-3">
-                <p class="text-stone-400 text-[10px] tracking-[0.5em] uppercase">Wedding Day</p>
-                <h2 class="text-stone-700 text-sm font-light tracking-[0.4em] uppercase">2026. 05</h2>
-            </div>
-            
-            <div class="cal-grid">
-                <div class="cal-head sun-text">S</div><div class="cal-head">M</div><div class="cal-head">T</div><div class="cal-head">W</div><div class="cal-head">T</div><div class="cal-head">F</div><div class="cal-head sat-text">S</div>
-                
-                <div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div><div class="text-transparent">0</div><div class="font-light">1</div><div class="sat-text font-light">2</div>
-                <div class="sun-text font-light">3</div><div class="font-light">4</div><div class="font-light">5</div><div class="font-light">6</div><div class="font-light">7</div><div class="font-light">8</div><div class="sat-text font-light">9</div>
-                <div class="sun-text font-light">10</div><div class="font-light">11</div><div class="font-light">12</div><div class="font-light">13</div><div class="font-light">14</div><div class="font-light">15</div><div class="sat-text font-light">16</div>
-                <div class="sun-text font-light">17</div><div class="font-light">18</div><div class="font-light">19</div><div class="font-light">20</div><div class="font-light">21</div><div class="font-light">22</div><div class="sat-text font-light">23</div>
-                <div class="sun-text"><div class="blue-mark">24</div></div><div class="font-light">25</div><div class="font-light">26</div><div class="font-light">27</div><div class="font-light">28</div><div class="font-light">29</div><div class="sat-text font-light">30</div>
-                <div class="sun-text font-light">31</div>
-            </div>
-        </section>
-
-        <!-- 갤러리 섹션 -->
-        <section class="py-24 bg-stone-50/60">
-            <div class="text-center mb-16 space-y-3">
-                <p class="text-stone-400 text-[10px] tracking-[0.5em]">사진첩</p>
-                <h2 class="text-stone-700 text-lg font-normal tracking-widest">저희 세 사람의 모습</h2>
-            </div>
-            <div class="relative px-8">
-                <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-sm relative bg-white">
-                    <img id="slideImg" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover img-fade" alt="Wedding Gallery">
-                    <button onclick="moveSlide(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/40 bg-black/5 rounded-full">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1"><path d="M15 18l-6-6 6-6"/></svg>
-                    </button>
-                    <button onclick="moveSlide(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center text-white/40 bg-black/5 rounded-full">
-                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1"><path d="M9 18l6-6-6-6"/></svg>
-                    </button>
+            <div class="text-center space-y-6">
+                <p class="text-sm tracking-widest text-stone-500 font-light">诚挚邀请您来参加我们的婚礼</p>
+                <div class="cursive text-xs text-stone-400 italic">
+                    "In the flow of time, love is the only eternity."
                 </div>
-                <div id="dots" class="flex justify-center gap-3 mt-10"></div>
+                <h1 class="text-xl md:text-2xl font-normal tracking-[0.4em] text-stone-800 pt-4">
+                    金度彦 & 金梅
+                </h1>
             </div>
-        </section>
+        </div>
 
-        <!-- 오시는 길 섹션 -->
-        <section class="py-24 px-8">
-            <div class="text-center mb-14 space-y-3">
-                <p class="text-stone-400 text-[10px] tracking-[0.5em]">오시는 길</p>
-                <h2 class="text-stone-700 text-lg font-normal tracking-widest">찾아오시는 길</h2>
-            </div>
-            
-            <div class="text-center mb-12 space-y-1">
-                <p class="text-stone-800 font-medium text-lg">스타시티영존 5층 웨딩홀</p>
-                <p class="text-stone-400 text-sm font-light">서울 광진구 능동로 110 (화양동)</p>
-            </div>
-            
-            <div class="rounded-2xl overflow-hidden h-72 mb-10 shadow-inner bg-stone-100 border border-stone-50">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3163.26875936715!2d127.07062257662998!3d37.54164102575453!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca4de00000001%3A0xc3485747442ec9a5!2z7Iqk7YOA7Iuc7Yuw7JiB7KG0!5e0!3m2!1sko!2skr!4v1715600000000!5m2!1sko!2skr" class="w-full h-full grayscale-[0.2]" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
-            <div class="grid grid-cols-2 gap-4">
-                <button onclick="window.open('https://map.naver.com/v5/directions/-/14145228.61,4514841.05,%EC%8A%A4%ED%83%80%EC%8B%9C%ED%8B%B0%EC%98%81%EC%A1%B4,,ADDRESS_POI')" class="py-4 rounded-xl border border-stone-100 text-[12px] text-stone-600 active:bg-stone-50 transition">네이버 지도</button>
-                <button onclick="window.open('https://map.kakao.com/link/to/스타시티영존,37.541641,127.070622')" class="py-4 rounded-xl border border-stone-100 text-[12px] text-stone-600 active:bg-stone-50 transition">카카오 지도</button>
-            </div>
-        </section>
-
-        <!-- 계좌 정보 섹션 -->
-        <section class="py-24 px-8 bg-stone-50/80">
-            <div class="text-center mb-14 space-y-3">
-                <p class="text-stone-400 text-[10px] tracking-[0.5em]">마음 전하실 곳</p>
-                <h2 class="text-stone-700 text-lg font-normal tracking-widest">축복의 마음</h2>
-            </div>
-            
-            <div class="space-y-5">
-                <div class="bg-white p-7 rounded-2xl flex justify-between items-center border border-stone-100">
-                    <div class="text-left space-y-2">
-                        <p class="text-[10px] text-stone-400 uppercase font-light">신랑측 계좌</p>
-                        <p class="text-[15px] text-stone-700 font-medium">신한은행 110-123-456789</p>
-                        <p class="text-[12px] text-stone-400">김도언</p>
-                    </div>
-                    <button onclick="copyToClipboard('110-123-456789')" class="text-[11px] text-stone-400 border border-stone-100 px-3 py-2 rounded-lg active:bg-stone-50">복사</button>
-                </div>
-                <div class="bg-white p-7 rounded-2xl flex justify-between items-center border border-stone-100">
-                    <div class="text-left space-y-2">
-                        <p class="text-[10px] text-stone-400 uppercase font-light">신부측 계좌</p>
-                        <p class="text-[15px] text-stone-700 font-medium">우리은행 1002-123-456789</p>
-                        <p class="text-[12px] text-stone-400">김매</p>
-                    </div>
-                    <button onclick="copyToClipboard('1002-123-456789')" class="text-[11px] text-stone-400 border border-stone-100 px-3 py-2 rounded-lg active:bg-stone-50">복사</button>
+        <!-- RIGHT SIDE: Details & Content -->
+        <div class="p-8 md:p-12 flex flex-col items-center justify-center text-center">
+            <div class="mb-10">
+                <p class="cursive text-red-800 text-lg">About Wedding</p>
+                <div class="mt-4 space-y-1">
+                    <p class="text-base tracking-widest border-b border-stone-800 inline-block pb-1">2026年 5月 24日 星期日</p>
+                    <p class="text-[10px] text-stone-400">丙午年 四月初八</p>
                 </div>
             </div>
-        </section>
 
-        <!-- 푸터 섹션 -->
-        <footer class="py-32 text-center bg-white border-t border-stone-50">
-            <p class="text-[12px] text-stone-300 tracking-[0.5em] mb-6">김도언 그리고 김매</p>
-            <p class="text-[11px] text-stone-300 font-light leading-relaxed">저희와 요한이의 시작을<br>함께 축복해주셔서 감사합니다.</p>
-        </footer>
+            <div class="mb-8">
+                <p class="cursive text-3xl text-red-800 mb-1">11:00</p>
+                <p class="text-xs tracking-widest text-stone-500">婚礼午宴</p>
+            </div>
 
-        <div id="toast" class="fixed bottom-12 left-1/2 -translate-x-1/2 bg-stone-800/95 text-white px-10 py-3.5 rounded-full text-[12px] opacity-0 transition-opacity duration-300 z-50 pointer-events-none font-light">
-            계좌번호가 복사되었습니다.
+            <!-- CUSTOM ILLUSTRATION AREA -->
+            <div class="w-24 h-24 mb-10 opacity-80">
+                <!-- REPLACE THIS URL with your own custom illustration/drawing icon -->
+                <img id="custom-illustration" src="https://cdn-icons-png.flaticon.com/512/3663/3663335.png" 
+                     alt="Decoration" class="w-full h-full object-contain">
+            </div>
+
+            <div class="space-y-6 text-xs md:text-sm leading-relaxed text-stone-600 font-light">
+                <div class="space-y-1 mb-8">
+                    <p class="text-stone-800 font-medium tracking-widest">STAR CITY YOUNG ZONE 礼堂</p>
+                    <p class="text-[10px] text-stone-400">( 首尔特别市广津区能洞路 110 )</p>
+                </div>
+
+                <div class="space-y-2 opacity-80">
+                    <p>感谢此刻正在看请柬的你</p>
+                    <p>收到这份请柬的你</p>
+                    <p>都是我们人生中最重要的一部分</p>
+                    <p>在我们最重要的一天希望有你一起见证</p>
+                    <p>期待你的到来</p>
+                </div>
+
+                <div class="pt-10">
+                    <p class="cursive text-xl text-red-800">Thank you</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <script>
-        const weddingDateKST = new Date('2026-05-24T11:00:00+09:00');
+        /**
+         * EASY PHOTO REPLACEMENT
+         * Replace the URLs below with your GitHub raw image links or other hosting links.
+         */
+        const CONFIG = {
+            mainPhoto: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
+            rightIllustration: "https://cdn-icons-png.flaticon.com/512/3663/3663335.png", // The one with the dancing characters in your template
+            weddingDate: "2026-05-24T11:00:00+09:00",
+            names: "金度彦 & 金梅",
+            address: "STAR CITY YOUNG ZONE 礼堂"
+        };
 
-        function updateDday() {
-            const now = new Date();
-            const diff = weddingDateKST - now;
-            const container = document.getElementById('dday');
-            if (diff <= 0) {
-                container.innerHTML = "<p class='text-xl tracking-widest animate-fadeIn'>저희, 오늘 결혼합니다.</p>";
-                return;
-            }
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-            const m = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
-            const s = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-            container.innerHTML = `
-                <div class="flex flex-col items-center"><span class="text-2xl font-light">${d}</span><span class="text-[10px] mt-2 opacity-60">일</span></div>
-                <div class="text-xl opacity-20 font-thin self-start mt-1">:</div>
-                <div class="flex flex-col items-center"><span class="text-2xl font-light">${h}</span><span class="text-[10px] mt-2 opacity-60">시간</span></div>
-                <div class="text-xl opacity-20 font-thin self-start mt-1">:</div>
-                <div class="flex flex-col items-center"><span class="text-2xl font-light">${m}</span><span class="text-[10px] mt-2 opacity-60">분</span></div>
-                <div class="text-xl opacity-20 font-thin self-start mt-1">:</div>
-                <div class="flex flex-col items-center"><span class="text-2xl font-light text-rose-300">${s}</span><span class="text-[10px] mt-2 opacity-60 font-medium">초</span></div>
-            `;
-        }
-        setInterval(updateDday, 1000);
-        updateDday();
+        // Apply config to elements
+        window.onload = () => {
+            document.getElementById('main-photo').src = CONFIG.mainPhoto;
+            document.getElementById('custom-illustration').src = CONFIG.rightIllustration;
+        };
 
         function toggleMusic() {
             const audio = document.getElementById('bgm');
-            const icon = document.getElementById('musicIcon');
-            if (audio.paused) {
-                audio.play();
-                icon.style.stroke = "#f9a8d4";
-                icon.classList.add('animate-spin-slow');
-            } else {
-                audio.pause();
-                icon.style.stroke = "#6b5e54";
-                icon.classList.remove('animate-spin-slow');
-            }
-        }
-
-        const images = [
-            "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80"
-        ];
-        let currentIdx = 0;
-        const slideImg = document.getElementById('slideImg');
-        const dotsContainer = document.getElementById('dots');
-        images.forEach((_, i) => {
-            const dot = document.createElement('div');
-            dot.className = `w-1 h-1 rounded-full transition-all duration-700 ${i === 0 ? 'bg-stone-500 w-4' : 'bg-stone-200'}`;
-            dotsContainer.appendChild(dot);
-        });
-        function moveSlide(n) {
-            currentIdx = (currentIdx + n + images.length) % images.length;
-            slideImg.style.opacity = '0.3';
-            setTimeout(() => { slideImg.src = images[currentIdx]; slideImg.style.opacity = '1'; }, 300);
-            Array.from(dotsContainer.children).forEach((dot, i) => {
-                dot.className = `w-1 h-1 rounded-full transition-all duration-700 ${i === currentIdx ? 'bg-stone-500 w-4' : 'bg-stone-200'}`;
-            });
-        }
-        function copyToClipboard(text) {
-            const el = document.createElement('textarea');
-            el.value = text;
-            document.body.appendChild(el);
-            el.select();
-            document.execCommand('copy');
-            document.body.removeChild(el);
-            const toast = document.getElementById('toast');
-            toast.style.opacity = '1';
-            setTimeout(() => toast.style.opacity = '0', 2500);
+            if(audio) audio.paused ? audio.play() : audio.pause();
         }
     </script>
 </body>
