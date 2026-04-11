@@ -57,21 +57,14 @@
             z-index: 10;
         }
 
-        /* 优化照片容器，使其尺寸更大更自然 */
-        .photo-frame {
-            border: 1px solid rgba(0,0,0,0.05);
-            padding: 12px;
-            background: white;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
+        /* 移除原有的 photo-frame 样式，改用简单的投影 */
         .main-wedding-photo {
             width: 100%;
             height: auto;
             display: block;
             object-fit: cover;
+            /* 添加淡投影让照片在纸上有厚度感 */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
         .heart-icon {
@@ -94,12 +87,12 @@
 
         <!-- LEFT SIDE: 主照片 -->
         <div class="p-6 md:p-10 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
-            <div class="w-full max-w-[360px] mb-8"> <!-- 增加了最大宽度限制 -->
-                <div class="photo-frame">
-                    <img id="main-photo" src="https://kdoen.github.io/16_BJS02649.jpg" 
-                         alt="Main Wedding Photo" class="main-wedding-photo">
-                </div>
-                <div class="mt-6 text-center">
+            <div class="w-full max-w-[360px] mb-8">
+                <!-- 这里直接放图片，去掉了外层白色的 photo-frame div -->
+                <img id="main-photo" src="https://kdoen.github.io/16_BJS02649.jpg" 
+                     alt="Main Wedding Photo" class="main-wedding-photo">
+                
+                <div class="mt-8 text-center">
                     <p class="text-[10px] tracking-[0.3em] text-stone-400 uppercase">婚礼邀请函</p>
                     <p class="text-[9px] tracking-[0.2em] text-stone-300 uppercase font-light mt-1">Welcome to our wedding</p>
                 </div>
