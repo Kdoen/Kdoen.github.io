@@ -65,7 +65,6 @@
             overflow: hidden;
         }
 
-        /* 恢复原始照片样式，不进行缩放或偏移 */
         .main-wedding-photo {
             width: 100%;
             height: auto;
@@ -79,28 +78,10 @@
             margin: 0 0.3em;
         }
 
-        .thank-you-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2px;
-            margin-top: 20px;
-        }
-
-        .champagne-wrapper {
-            width: 55px; 
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .champagne-img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-            opacity: 0.95;
+        /* 恢复居中的 Thank you 样式 */
+        .thank-you-container {
+            margin-top: 32px;
+            text-align: center;
         }
     </style>
 </head>
@@ -166,12 +147,8 @@
                     <p>期待，婚礼见</p>
                 </div>
 
-                <div class="thank-you-row">
-                    <p class="cursive text-2xl text-red-800">Thank you</p>
-                    <div class="champagne-wrapper">
-                        <img id="champagne-glasses" src="https://kdoen.github.io/IMG_6886.jpeg" 
-                             alt="Champagne Glasses" class="champagne-img">
-                    </div>
+                <div class="thank-you-container">
+                    <p class="cursive text-3xl text-red-800">Thank you</p>
                 </div>
             </div>
         </div>
@@ -180,14 +157,12 @@
     <script>
         const CONFIG = {
             mainPhoto: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
-            characterImg: "https://kdoen.github.io/wedding-character-transparent.png",
-            champagneImg: "https://kdoen.github.io/IMG_6886.jpeg"
+            characterImg: "https://kdoen.github.io/wedding-character-transparent.png"
         };
 
         window.onload = () => {
             document.getElementById('main-photo').src = CONFIG.mainPhoto;
             document.getElementById('custom-illustration').src = CONFIG.characterImg;
-            document.getElementById('champagne-glasses').src = CONFIG.champagneImg;
         };
     </script>
 </body>
