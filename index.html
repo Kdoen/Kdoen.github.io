@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedding Invitation</title>
+    <title>金道彦 ❤ 金梅 婚礼邀请函</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -29,7 +29,6 @@
         }
         .cursive { font-family: 'Dancing Script', cursive; }
         
-        /* Layout mimics the physical spread */
         .invitation-spread {
             width: 100%;
             max-width: 900px;
@@ -40,7 +39,6 @@
             position: relative;
         }
 
-        /* Responsive for mobile - stacks the spread */
         @media (max-width: 768px) {
             .invitation-spread {
                 grid-template-columns: 1fr;
@@ -55,7 +53,7 @@
             top: 0;
             bottom: 0;
             width: 1px;
-            background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0), rgba(0,0,0,0.05));
+            background: linear-gradient(to right, rgba(0,0,0,0.03), rgba(0,0,0,0), rgba(0,0,0,0.03));
             z-index: 10;
         }
 
@@ -64,40 +62,78 @@
             padding: 10px;
             background: white;
             box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            overflow: hidden;
+        }
+
+        /* 恢复原始照片样式，不进行缩放或偏移 */
+        .main-wedding-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .heart-icon {
+            color: var(--accent-red);
+            font-size: 0.9em;
+            vertical-align: middle;
+            margin: 0 0.3em;
+        }
+
+        .thank-you-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            margin-top: 20px;
+        }
+
+        .champagne-wrapper {
+            width: 55px; 
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .champagne-img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            opacity: 0.95;
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <div class="invitation-spread paper-texture animate-fadeIn">
+    <div class="invitation-spread paper-texture">
         <div class="center-crease"></div>
 
-        <!-- LEFT SIDE: Main Visual & Names -->
+        <!-- LEFT SIDE: 主照片 -->
         <div class="p-8 md:p-12 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
             <div class="w-full max-w-[320px] mb-8">
                 <div class="photo-frame">
-                    <!-- REPLACE THIS URL with your main wedding photo -->
                     <img id="main-photo" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" 
-                         alt="Main Wedding Photo" class="w-full h-auto grayscale-[0.2]">
+                         alt="Main Wedding Photo" class="main-wedding-photo grayscale-[0.1]">
                 </div>
                 <div class="mt-4 text-center">
-                    <p class="text-[10px] tracking-widest text-stone-400">婚禮請柬</p>
+                    <p class="text-[10px] tracking-widest text-stone-400">婚礼邀请函</p>
                     <p class="text-[9px] tracking-widest text-stone-400 uppercase font-light">Welcome to our wedding</p>
                 </div>
             </div>
 
             <div class="text-center space-y-6">
-                <p class="text-sm tracking-widest text-stone-500 font-light">诚挚邀请您来参加我们的婚礼</p>
+                <p class="text-sm tracking-widest text-stone-500 font-light">诚挚邀请您前来参加我们的婚礼</p>
                 <div class="cursive text-xs text-stone-400 italic">
                     "In the flow of time, love is the only eternity."
                 </div>
-                <h1 class="text-xl md:text-2xl font-normal tracking-[0.4em] text-stone-800 pt-4">
-                    金度彦 & 金梅
+                <h1 class="text-xl md:text-2xl font-normal tracking-[0.2em] text-stone-800 pt-4 flex items-center justify-center">
+                    金道彦 <span class="heart-icon">❤</span> 金梅
                 </h1>
             </div>
         </div>
 
-        <!-- RIGHT SIDE: Details & Content -->
+        <!-- RIGHT SIDE: 婚礼详情 -->
         <div class="p-8 md:p-12 flex flex-col items-center justify-center text-center">
             <div class="mb-10">
                 <p class="cursive text-red-800 text-lg">About Wedding</p>
@@ -107,25 +143,22 @@
                 </div>
             </div>
 
-            <div class="mb-8">
-                <p class="cursive text-3xl text-red-800 mb-1">11:00</p>
-                <p class="text-xs tracking-widest text-stone-500">婚礼午宴</p>
+            <div class="mb-6">
+                <p class="cursive text-3xl text-red-800 mb-1">11:00 AM</p>
             </div>
 
-            <!-- CUSTOM ILLUSTRATION AREA -->
-            <div class="w-24 h-24 mb-10 opacity-80">
-                <!-- REPLACE THIS URL with your own custom illustration/drawing icon -->
-                <img id="custom-illustration" src="https://cdn-icons-png.flaticon.com/512/3663/3663335.png" 
-                     alt="Decoration" class="w-full h-full object-contain">
+            <div class="w-full max-w-[240px] mb-8 flex items-center justify-center">
+                <img id="custom-illustration" src="https://kdoen.github.io/wedding-character-transparent.png" 
+                     alt="Wedding Character" class="max-w-full h-auto object-contain">
             </div>
 
             <div class="space-y-6 text-xs md:text-sm leading-relaxed text-stone-600 font-light">
-                <div class="space-y-1 mb-8">
-                    <p class="text-stone-800 font-medium tracking-widest">STAR CITY YOUNG ZONE 礼堂</p>
-                    <p class="text-[10px] text-stone-400">( 首尔特别市广津区能洞路 110 )</p>
+                <div class="space-y-1 mb-6">
+                    <p class="text-stone-800 font-medium tracking-widest">STARCITY ARTHALL 5F</p>
+                    <p class="text-[10px] text-stone-400">110 Neungdong-ro, Gwangjin-gu, Seoul, Republic of Korea</p>
                 </div>
 
-                <div class="space-y-2 opacity-80">
+                <div class="space-y-2 opacity-80 text-[13px]">
                     <p>感谢此刻正在看请柬的你</p>
                     <p>收到这份请柬的你</p>
                     <p>都是我们人生中最重要的一部分</p>
@@ -133,36 +166,29 @@
                     <p>期待你的到来</p>
                 </div>
 
-                <div class="pt-10">
-                    <p class="cursive text-xl text-red-800">Thank you</p>
+                <div class="thank-you-row">
+                    <p class="cursive text-2xl text-red-800">Thank you</p>
+                    <div class="champagne-wrapper">
+                        <img id="champagne-glasses" src="https://kdoen.github.io/IMG_6886.jpeg" 
+                             alt="Champagne Glasses" class="champagne-img">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        /**
-         * EASY PHOTO REPLACEMENT
-         * Replace the URLs below with your GitHub raw image links or other hosting links.
-         */
         const CONFIG = {
             mainPhoto: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
-            rightIllustration: "https://kdoen.github.io/wedding-character-transparent.png",//"https://cdn-icons-png.flaticon.com/512/3663/3663335.png", // The one with the dancing characters in your template
-            weddingDate: "2026-05-24T11:00:00+09:00",
-            names: "金度彦 & 金梅",
-            address: "STAR CITY YOUNG ZONE 礼堂"
+            characterImg: "https://kdoen.github.io/wedding-character-transparent.png",
+            champagneImg: "https://kdoen.github.io/IMG_6886.jpeg"
         };
 
-        // Apply config to elements
         window.onload = () => {
             document.getElementById('main-photo').src = CONFIG.mainPhoto;
-            document.getElementById('custom-illustration').src = CONFIG.rightIllustration;
+            document.getElementById('custom-illustration').src = CONFIG.characterImg;
+            document.getElementById('champagne-glasses').src = CONFIG.champagneImg;
         };
-
-        function toggleMusic() {
-            const audio = document.getElementById('bgm');
-            if(audio) audio.paused ? audio.play() : audio.pause();
-        }
     </script>
 </body>
 </html>
