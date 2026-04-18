@@ -72,13 +72,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        .heart-icon {
-            color: var(--accent-red);
-            font-size: 0.9em;
-            vertical-align: middle;
-            margin: 0 0.3em;
-        }
-
         .thank-you-container {
             margin-top: 32px;
             text-align: center;
@@ -93,6 +86,17 @@
             z-index: 20;
             pointer-events: none;
         }
+
+        /* Refined Heart Styling */
+        .heart-svg {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            fill: var(--accent-red);
+            margin: 0 8px;
+            vertical-align: middle;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -100,9 +104,8 @@
     <div class="invitation-spread paper-texture">
         <div class="center-crease"></div>
 
-        <!-- LEFT SIDE: 主照片 -->
+        <!-- LEFT SIDE -->
         <div class="p-6 md:p-10 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
-            
             <div class="cursive text-[11px] text-stone-700 italic mb-6 tracking-wider">
                 "In the flow of time, love is the only eternity."
             </div>
@@ -126,12 +129,16 @@
                 </div>
                 
                 <h1 class="text-1xl font-medium tracking-[0.2em] text-stone-800 mt-8 flex items-center justify-center">
-                    金道彦 <span class="heart-icon">❤</span> 金梅
+                    金道彦 
+                    <svg class="heart-svg" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                    </svg>
+                    金梅
                 </h1>
             </div>
         </div>
 
-        <!-- RIGHT SIDE: 婚礼详情 -->
+        <!-- RIGHT SIDE -->
         <div class="p-8 md:p-12 flex flex-col items-center justify-center text-center">
             <div class="mb-10">
                 <p class="cursive text-[#A42423] text-1xl">日期 / Date</p>
@@ -142,7 +149,6 @@
             </div>
 
             <div class="w-full max-w-[240px] mb-8 flex items-center justify-center relative">
-                <!-- Cover Patch added to right side illustration -->
                 <img id="photo-patch" src="https://kdoen.github.io/%E6%88%AA%E5%B1%8F2026-04-18%2023.28.46.png" 
                      alt="Patch" class="illustration-patch">
                 
