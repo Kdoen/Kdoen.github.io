@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SHARE COVER EFFECT (OG TAGS) -->
     <title>金道彦 ❤ 金梅 婚礼邀请函</title>
+    <meta name="description" content="诚邀您见证我们的幸福时刻 | 2026.05.24">
+    <meta property="og:title" content="金道彦 ❤ 金梅 婚礼邀请函">
+    <meta property="og:description" content="诚邀您见证我们的幸福时刻 | 2026.05.24">
+    <meta property="og:image" content="https://kdoen.github.io/16_BJS02649.jpg">
+    <meta property="og:type" content="website">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200;300;400;500&family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">
     <style>
@@ -64,16 +72,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        /* Patch for the Right Side Illustration */
-        .illustration-patch {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 30%; /* Adjust width to cover the watermark on the character img */
-            z-index: 20;
-            pointer-events: none;
-        }
-
         .heart-icon {
             color: var(--accent-red);
             font-size: 0.9em;
@@ -85,6 +83,16 @@
             margin-top: 32px;
             text-align: center;
         }
+
+        /* Watermark Cover for Illustration */
+        .illustration-patch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 30%;
+            z-index: 20;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -94,6 +102,7 @@
 
         <!-- LEFT SIDE: 主照片 -->
         <div class="p-6 md:p-10 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-stone-200">
+            
             <div class="cursive text-[11px] text-stone-700 italic mb-6 tracking-wider">
                 "In the flow of time, love is the only eternity."
             </div>
@@ -132,9 +141,8 @@
                 </div>
             </div>
 
-            <!-- ILLUSTRATION CONTAINER with Patch -->
             <div class="w-full max-w-[240px] mb-8 flex items-center justify-center relative">
-                <!-- COVER PATCH PLACED HERE (Right side) -->
+                <!-- Cover Patch added to right side illustration -->
                 <img id="photo-patch" src="https://kdoen.github.io/%E6%88%AA%E5%B1%8F2026-04-18%2023.28.46.png" 
                      alt="Patch" class="illustration-patch">
                 
